@@ -1,135 +1,107 @@
+// src/components/header/Header.styled.ts
 import styled from "styled-components";
 
 export const HeaderWrapper = styled.header`
-  width: 100%;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background-color: #ffffff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 15px 0;
+  background-color: #f8f9fa;
+  padding: 20px 0;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10;
 `;
 
 export const Container = styled.div`
-  max-width: 90%;
-  margin: 20px auto;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 `;
 
 export const Navbar = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
-  z-index: 10;
+`;
+
+export const NavLogo = styled.a`
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
 `;
 
 export const NavMenu = styled.ul`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  gap: 20px;
 
-  &.active {
-    left: 0;
-    z-index: 1000;
-  }
-
-  @media only screen and (max-width: 894px) {
-    position: fixed;
-    left: -100%;
-    top: 5rem;
-    flex-direction: column;
-    background-color: #fff;
+  @media (max-width: 768px) {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: white;
     width: 100%;
-    border-radius: 10px;
-    text-align: center;
-    transition: 0.3s;
-    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100%);
+    transition: all 0.3s ease;
 
     &.active {
-      left: 0;
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
     }
   }
 `;
 
 export const NavItem = styled.li`
-  margin-left: 3rem;
-
-  @media only screen and (max-width: 894px) {
-    margin: 2.5rem 0;
-  }
+  list-style: none;
 `;
 
 export const NavLink = styled.a`
-  font-size: 24px;
-  font-weight: 700;
-  color: navy;
   text-decoration: none;
+  color: #333;
+  font-size: 18px;
+  font-weight: 500;
 
   &:hover {
-    color: #070033;
+    color: #0056b3;
   }
 `;
 
-export const NavLogo = styled.a`
-  font-size: 40px;
-  font-weight: 900;
-  color: navy;
-  text-decoration: none;
-`;
-
 export const ButtonHover = styled.button`
-  font-size: 16px;
-  padding: 15px 40px;
-  font-weight: 600;
-  color: #fff;
-  cursor: pointer;
-  background-size: 300% 100%;
+  background-color: #0056b3;
+  color: white;
   border: none;
-  border-radius: 50px;
-  background-image: linear-gradient(
-    to right,
-    #34588a,
-    #4481eb,
-    #061586,
-    #0958ce
-  );
-  box-shadow: 0 4px 15px 0 rgba(4, 79, 190, 0.75);
-  transition: all 0.4s ease-in-out;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s ease-in-out;
 
   &:hover {
-    background-position: 100% 0;
+    background-color: #003f7f;
   }
 `;
 
 export const Hamburger = styled.div`
   display: none;
   cursor: pointer;
-  z-index: 1001;
 
-  @media only screen and (max-width: 894px) {
-    display: block;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
   }
 `;
 
 export const Bar = styled.span`
-  display: block;
   width: 25px;
   height: 3px;
-  margin: 5px auto;
-  transition: all 0.3s ease-in-out;
-  background-color: navy;
-
-  ${Hamburger}.active & {
-    &:nth-child(2) {
-      opacity: 0;
-    }
-
-    &:nth-child(1) {
-      transform: translateY(8px) rotate(45deg);
-    }
-
-    &:nth-child(3) {
-      transform: translateY(-8px) rotate(-45deg);
-    }
-  }
+  background-color: #333;
+  border-radius: 2px;
 `;

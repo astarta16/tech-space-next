@@ -1,4 +1,6 @@
+// src/components/header/Header.tsx
 import React, { useState } from "react";
+import Link from "next/link";
 import {
   HeaderWrapper,
   Navbar,
@@ -13,7 +15,7 @@ import {
 } from "./Header.styled";
 
 const Header: React.FC = () => {
-  const [menuActive, setMenuActive] = useState<boolean>(false); // Corrected useState syntax
+  const [menuActive, setMenuActive] = useState<boolean>(false);
 
   const toggleMenu = () => {
     setMenuActive(!menuActive);
@@ -26,16 +28,19 @@ const Header: React.FC = () => {
           <NavLogo href="/">TechSpace.</NavLogo>
           <NavMenu className={menuActive ? "active" : ""}>
             <NavItem>
-              <NavLink href="/">მთავარი</NavLink>
+              <Link href="/" passHref>
+                <NavLink>მთავარი</NavLink>
+              </Link>
             </NavItem>
             <NavItem>
-              <NavLink href="/course">კურსები</NavLink>
+              <Link href="/courses" passHref>
+                <NavLink>კურსები</NavLink>
+              </Link>
             </NavItem>
             <NavItem>
-              <NavLink href="/about">მიზანი</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/blog">ბლოგი</NavLink>
+              <Link href="/about" passHref>
+                <NavLink>მიზანი</NavLink>
+              </Link>
             </NavItem>
             <NavItem>
               <ButtonHover onClick={() => alert("Modal opens!")}>
